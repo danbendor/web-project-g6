@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="managment.css">
+    <header>
+        <section class="nav">
+            <div class="topnav">
+                <a class="active" href="#home">Home</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+              </div>
+        </section>
+    </header>
+  <body>
+
+    <section class="menu">
+        <div class="vertical-menu">
+            <a href="#">A store</a>
+            <a href="#">Tracking</a>
+            <a href="#">Link 3</a>
+            <a href="#">Link 4</a>
+          </div>
+    </section>
+
+    <section class="table">
+
+        <h2>inventory management</h2>
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <script>
+                        window.onload = function () {
+                        
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                            animationEnabled: true,
+                            exportEnabled: true,
+                            theme: "light1", // "light1", "light2", "dark1", "dark2"
+                            title:{
+                                text: "Simple Column Chart with Index Labels"
+                            },
+                              axisY: {
+                              includeZero: true
+                            },
+                            data: [{
+                                type: "column", //change type to bar, line, area, pie, etc
+                                //indexLabel: "{y}", //Shows y value on all Data Points
+                                indexLabelFontColor: "#5A5757",
+                                  indexLabelFontSize: 16,
+                                indexLabelPlacement: "outside",
+                                dataPoints: [
+                                    { x: 10, y: 71 },
+                                    { x: 20, y: 55 },
+                                    { x: 30, y: 50 },
+                                    { x: 40, y: 65 },
+                                    { x: 50, y: 92, indexLabel: "\u2605 Highest" },
+                                    { x: 60, y: 68 },
+                                    { x: 70, y: 38 },
+                                    { x: 80, y: 71 },
+                                    { x: 90, y: 54 },
+                                    { x: 100, y: 60 },
+                                    { x: 110, y: 36 },
+                                    { x: 120, y: 49 },
+                                    { x: 130, y: 21, indexLabel: "\u2691 Lowest" }
+                                ]
+                            }]
+                        });
+                        chart.render();
+                        
+                        }
+                        </script>
+                        
+                        </head>
+                        <thead>
+                        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+            </table>
+        </div>
+    </section>
+  </body>
+
+
+  
+ 
+  </thead>
+  </html>
+</html>
