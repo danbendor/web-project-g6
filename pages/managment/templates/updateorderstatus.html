@@ -1,0 +1,18 @@
+
+<title> sign up</title>
+<link rel="stylesheet" href="{{ url_for('updateorderstatus.static', filename='css/addnewuser.css') }}"/>
+<div class="login-box" style="margin-top: 5%">
+  <h2> Update Order Status</h2>
+  <form action="/updateorderstatus" method="GET">
+      <label for="order id">Order id</label>
+        <input type="text" name="orderid" placeholder="order id" />
+      <br><br>
+      <input type="text" name="status" placeholder="new status" />
+
+      <input type="submit" >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+  </form>
+</div>

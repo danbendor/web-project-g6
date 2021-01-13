@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+    
+<head>
+    <link rel="stylesheet" href="{{ url_for('detailsorder.static', filename='css/detailsordercss.css') }}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>order deatils</title>
+</head>
+<body>
+      <div class="topnav" style="height: 125%" >
+        {%  include 'header.html' %}
+      </div>
+    <div id="container">
+            <div class="product-details">
+                <h4 >Order Number {{ orderid }} </h4>
+                            <p class="information">
+                                <hr> <strong>Date: {{ order_date }}</strong> </hr>
+                                <hr><strong>Customer Name: {{ details.customer_name }}</strong></hr>
+                                <hr><strong>Customer City: {{ details.customer_city }}</strong></hr>
+                                <hr><strong>Customer Address: {{ details.customer_address }}</strong></hr>
+                                <hr><strong>Customer Phone: {{ details.customer_phone }}</strong></hr>
+                                <hr><strong>Price: {{ details.order_price }}</strong></hr>
+                                <hr><strong>Status: {{ details.order_status }}</strong></hr>
+
+                            </p>
+        <div class="control">
+            <button class="btn">
+           <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+        <a href="/Contacthtml">
+           <span class="buy">Send massage</span>
+        </a>
+            </button>
+        </div>
+        </div>
+
+        <div class="product-image">
+
+           <img src="{{ url_for('homepage.static', filename='media/logo1-removebg-preview.png') }}"  alt="" width="300px">
+
+        <div class="info">
+            <h2>The Description</h2>
+            <ul>
+                <li><strong>Product Type: </strong>{{ details.product_type }}</li>
+                <li><strong>Model: </strong>{{ details.product_name }}</li>
+                <li><strong>Size: </strong>{{ details.size }}</li>
+                <li><strong>Color: </strong>{{ details.color }}</li>
+                <li><strong>Comment: </strong>{{ details.comment }}</li>
+                
+            </ul>
+        </div>
+        </div>
+       
+        
+        </div>
+        
+         
+                    <div class="track">
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> </span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">  </span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">  </span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text"></span> </div>
+                    </div>
+                 
+                
+                </div>
+    
+</body>
+</html>

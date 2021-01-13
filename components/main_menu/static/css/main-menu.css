@@ -1,0 +1,11 @@
+.main-menu ul {
+    padding: 0;
+}
+
+.main-menu > ul > li {
+    display: inline-block;
+}
+
+.main-menu > ul li a.active {
+    color: var(--active-menu-item-color);
+}

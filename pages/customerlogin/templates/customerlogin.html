@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <script src="{{ url_for('homepage.static', filename='js/loginjs.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/logincss.css') }}"/>
+<div class="login-box">
+    <head>
+        <title> Login</title>
+        <div id="container">
+            <img src="{{ url_for('homepage.static', filename='media/logo1-removebg-preview.png') }}"  alt="" width="300px">
+        </div>
+      </head>
+    <h2>Login Customer</h2>
+    <form action="/customerlogin" method="POST">
+        <label>Phone number</label>
+        <input type="text" name="phone" id="phone" required="">
+       <br><br><br>
+        <input type="submit" value="Login" id="submit" onclick="validate()">
+      <a href="/" value="register" id="employeeEnter" style="margin-left: 100px" >   <span></span>  <span></span> <span></span> <span></span> Employee Enter     </a>
+    </form>
+  </div>

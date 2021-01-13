@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('contact.static', filename='css/contactcss.css') }}"/>
+        <script src="{{ url_for('contact.static', filename='js/ContactJS.js') }}"></script>
+        <title > contact us</title>
+        <div class="head">
+            <h2>contact us</h2>
+        </div>
+    </head>
+    <body>
+    <section id="contact-form">
+        <form id="contact" name="contact" accept-charset="utf-8">
+          <label><span>Name</span><input name="name" type="text" placeholder="Name"/></label>
+          <label><span>Email</span><input name="email" type="email" placeholder="Email"/></label>
+          <label><span>Phone</span><input name="phone" type="phone" placeholder="phone"/></label>
+          <label><span>Message</span><textarea name="message" placeholder="Message"></textarea></label>       
+          <div id="heading1">
+            <input type="button" value="Send" class="button" id="button"  onclick="myClick()" >
+              
+            <p id="sent"></p>
+        </form>
+      </section>
+    </body>
+</html>

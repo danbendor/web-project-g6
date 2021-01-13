@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{{ url_for('about.static', filename='css/aboutcss.css') }}"/>
+<header>
+  <title> About</title>
+   <div class="topnav" style="width: 200%">
+      {%  include 'header.html' %}
+  </div>
+</header>
+
+    <body >
+    <div class="about">
+      <details open>
+        <summary>European Comfort</summary>
+        <div>
+            <img src="{{ url_for('about.static', filename='media/logo1-removebg-preview.png') }}"  width="200px">
+          <br>
+          <p>
+    European Comfort European Comfort is a company that specializes in providing smart solutions in the field of sleep
+    In the development and production of technologies and sleeping systems, the company specializes in the production of mattresses, youth beds, adjustable beds.
+    Double beds, youth sofas, youth beds and orthopedic youth sofas are high quality and comfortable.
+
+    The company places emphasis on local production in Israel
+    In advanced technology and uses materials made in Israel and made in Europe.
+
+    The mattresses, youth beds, and adjustable beds are made by the company
+    Marketers in select stores throughout the country, and for hotels we are committed to ensuring the quality of the products
+    Fairness and reliability in the prices and service we offer our customers.</p>
+        </div>
+      </details>
+      <details>
+        <summary>
+Factory outlets</summary>
+        <div>
+            <img src="{{ url_for('about.static', filename='media/Image00043.jpg') }}"  width="200px">
+          <br>
+          <p>
+For telephone reservations 0772308060 <br>
+              The company's factory outlets are located
+
+    Rishon Lezion Branch: 10 Moshe Levy Street (Israeli Furniture Center, 3rd floor, 325 store)
+    Petah Tikva Branch: Ben Zion Galis 30 Azat Sgula (Compound B near Sela Junction)
+    Netivot Branch: Craftsmen 10
+    Netanya Branch: The Craft 45
+    The store has a huge display of mattresses, beds, double beds, Jewish beds, guest sofas, friend beds, closets, dressers
+    Welcome to ...</p>
+        </div>
+      </details>
+      <details>
+        <summary>Customer Service</summary>
+        <div>
+         <img src="{{ url_for('about.static', filename='media/Image00023.jpg') }}"  width="200px">
+          <footer>
+          <p>
+Customer service and coordination department:
+    03-9067569  <br>
+    WhatsApp customer service050-3559197 <br>
+    <a href="mailto:azizayossi@gmail.com">      Customer service email  </a>
+
+      </p>
+      </footer>
+        </div>
+      </details>
+
+    </div>
+</body>
+</html>

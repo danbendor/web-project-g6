@@ -1,0 +1,21 @@
+
+<title> sign up</title>
+<link rel="stylesheet" href="{{ url_for('storessales.static', filename='css/addnewuser.css') }}"/>
+<div class="login-box" style="margin-top: 5%">
+  <h2>Store Sales </h2>
+  <form action="/storessales" method="GET">
+    <input type="submit" value="get stores sales">
+    <br>
+    {% if prices %}
+            {% for price in prices %}
+
+           shop: {{ price.shop_name }} has sale in  {{ price.totalsum }} shekels
+                <br>
+            {% endfor %}
+        {% endif %}
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+  </form>
+</div>
