@@ -2,16 +2,17 @@
  <link rel="stylesheet" href="{{ url_for('main_menu.static', filename='css/header.css') }}"/>
 
     <div class="topnav" >
-        <a class="active" href="/orderManagement">Home</a>
         {% if session['employee'] == True %}
         {% block a %}
+        <a class="active" href="/orderManagement">Home</a>
         <a href="/addorder">New order</a>
         <a href="/managment/1">Report</a>
         {%  endblock %}
         {% endif %}
         {% if session['customer'] == True %}
         {% block b %}
-        <a href="/contact">contact us</a>
+            <a class="active" href="/customerbase">Home</a>
+            <a href="/contact">contact us</a>
         {%  endblock %}
         {% endif %}
 
