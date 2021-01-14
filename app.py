@@ -67,6 +67,8 @@ contact
 from components.main_menu.main_menu import main_menu
 app.register_blueprint(main_menu)
 
+from pages.customerbase.customerbase import customerbase
+app.register_blueprint(customerbase)
 
 if __name__ == 'main':
     app.run(debug=True)

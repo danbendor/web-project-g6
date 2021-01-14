@@ -18,10 +18,10 @@ def index():
             user_id = dbManager.get_employee_id(username, password)
             user_name = dbManager.get_employee_name(username, password)
             session['Logged_in'] = True
+            session['employee'] = True
+            session['customer'] = False
             session['employee_id'] = user_id
             session['employee_name'] = user_name
             return redirect('/orderManagement')
-        else:
-            return render_template('loginhtml.html')
     return render_template('loginhtml.html')
 

@@ -9,12 +9,17 @@
             <img src="{{ url_for('homepage.static', filename='media/logo1-removebg-preview.png') }}"  alt="" width="300px">
         </div>
       </head>
-    <h2>Login Customer</h2>
+    <h2>Login</h2>
+    <h4>Enter order number and phone for customer</h4>
     <form action="/customerlogin" method="POST">
-        <label>Phone number</label>
-        <input type="text" name="phone" id="phone" required="">
+        <label>order</label>
+        <input type="text" name="username" id="username" required="">
        <br><br><br>
-        <input type="submit" value="Login" id="submit" onclick="validate()">
-      <a href="/" value="register" id="employeeEnter" style="margin-left: 100px" >   <span></span>  <span></span> <span></span> <span></span> Employee Enter     </a>
+        <label>phone </label>
+        <input type="password" name="password" id="password" required="">
+      <br><br>
+        <input type="submit" value="Login" id="submit" onclick="validate()"  style="background-color: #2dbd6e; height: 42px">
+      <a href=/customerbase value="register" id="submit" style="margin-left: 100px" >   <span></span>  <span></span> <span></span> <span></span> employee Enter     </a>
+{#   #}
     </form>
   </div>

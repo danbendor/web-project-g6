@@ -7,17 +7,19 @@ customerlogin = Blueprint('customerlogin', __name__, static_folder='static', sta
 # Routes
 @customerlogin.route('/customerlogin', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST' and 'phone' in request.form:
-        phone1 = request.form['phone']
-        check = dbManager.check_customer_phone(phone1)
-        print(check)
-        if check == True:
-            orderdetails = dbManager.get_ordersdetails1(phone1)
-            order_id = orderdetails.order_id
+    session['Logged_in'] = False
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+        username = request.form['username']
+        password = request.form['password']
+        check1 = dbManager.get_order_and_phone(username, password)
+        if check1 == True:
+            user_name = dbManager.get_customer_name(password)
             session['Logged_in'] = True
-            print(orderdetails)
-            return render_template('', order_id=order_id, orderdetails=orderdetails )
-        else:
-            return render_template('customerlogin.html')
+            session['customer'] = True
+            session['employee'] = False
+            session['order_id'] = int(username)
+            session['user_name'] = user_name
+            session['phone'] = password
+            return redirect('/customerbase')
     return render_template('customerlogin.html')
 

@@ -103,6 +103,15 @@ class DBManager:
                 return True
         return False
 
+    def get_order_and_phone(self, user, password):
+        query = "select orders.order_id, orders.customer_phone from orders"
+        #query_result = self.interact_db(query, query_type='fetch')
+        query_result = self.fetch(query)
+        for que in query_result:
+            if que.order_id == int(user) and que.customer_phone == password:
+                return True
+        return False
+
     def get_employee_id(self, user, password):
         query = "select employees.employee_id ,employees.employee_user, employees.employee_password from employees"
         #query_result = self.interact_db(query, query_type='fetch')
@@ -119,6 +128,17 @@ class DBManager:
         for que in query_result:
             if que.employee_user == user and que.employee_password == password:
                 return que.employee_name
+        return 0
+
+    def get_customer_name(self, phone):
+        query = "select customers.customer_name, customers.customer_phone from customers"
+        # query_result = self.interact_db(query, query_type='fetch')
+        query_result = self.fetch(query)
+        print(query_result)
+        print(phone)
+        for que in query_result:
+            if que.customer_phone == phone:
+                return que.customer_name
         return 0
 
 
@@ -191,7 +211,6 @@ class DBManager:
         for que in query_result:
             if que.customer_phone == phone:
                 return que.customer_phone
-
         return "x"
 
     def get_ordersdetails1(self, phone):
@@ -210,7 +229,6 @@ class DBManager:
     def get_ordersearch(self, search):
         query = "select orders.order_id, customers.customer_name, customers.customer_city, orders.order_date, orders.order_status, orders.order_price from orders inner join customers on orders.customer_phone=customers.customer_phone"
         query_result = self.fetch(query)
-        print(query_result)
         for que in query_result:
             if que.order_id == search:
                 return que
@@ -236,7 +254,6 @@ class DBManager:
     def get_storessales(self):
         query = "select sum(orders.order_price) as totalsum, shops.shop_name  from orders inner join customers on orders.customer_phone = customers.customer_phone  inner join  employees on customers.employee_id=employees.employee_id inner join shops on employees.shop_id = shops.shop_id GROUP BY  employees.shop_id"
         query_result = self.fetch(query)
-        print(query_result)
         return query_result
 
     def update_orders(self, order_status, order_id):
