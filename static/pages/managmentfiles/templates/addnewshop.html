@@ -1,0 +1,17 @@
+
+<title> sign up</title>
+<link rel="stylesheet" href="{{ url_for('addnewshop.static', filename='css/addnewuser.css') }}"/>
+<div class="login-box" style="margin-top: 5%">
+  <h2>New shop</h2>
+  <form action="/addnewshop" method="POST">
+ <input type="text" name="shop_id" placeholder="shop_id" />
+      <input type="text" name="shop_name" placeholder="shop_name" />
+      <input type="text" name="city" placeholder="city" />
+      <input type="text" name="phone"placeholder="phone"/>
+      <input type="submit" >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+  </form>
+</div>

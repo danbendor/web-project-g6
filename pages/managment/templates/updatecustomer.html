@@ -1,0 +1,23 @@
+
+<title> </title>
+<link rel="stylesheet" href="{{ url_for('updatecustomer.static', filename='css/addnewuser.css') }}"/>
+<div class="login-box" style="color: white">
+  <h2>Update Customer deatils</h2>
+  <form action="/updatecustomer" method="GET">
+     Choose customer phone:   <select type="customer_phone" name="customer_phone"  >
+          {% for j in phones_numbers %}
+                   <OPTION value="{{j[0]}}">{{j[0]}}</OPTION>
+          {% endfor %}
+                  </select>
+  <br><br>
+         Address:   <input type="text" name="customer_address" placeholder="new address" />
+         <br><br>
+         City: <input type="text" name="customer_city" placeholder="city" />
+         <input type="submit" >
+
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+  </form>
+</div>

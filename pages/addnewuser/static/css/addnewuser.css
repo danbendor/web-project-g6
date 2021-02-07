@@ -31,6 +31,9 @@ select {
   border-radius: 10px;
 }
 
+
+
+
 .login-box h2 {
   margin: 0 0 30px;
   padding: 0;
@@ -175,3 +178,4 @@ select {
     bottom: 100%;
   }
 }
+

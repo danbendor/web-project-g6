@@ -2,7 +2,6 @@ from settings import DB
 import mysql.connector
 from flask import request, render_template
 
-
 class DBManager:
     __connection = None
     __cursor = None
@@ -66,7 +65,6 @@ class DBManager:
             print("Failed to close connection with error {}".format(error))
 
     def create_new_user(self, employee_id, employee_name, employee_user, employee_password, shop_id):
-
         query = "INSERT INTO employees(employee_id , employee_name, employee_user, employee_password, shop_id) VALUES ('%s', '%s', '%s', '%s', '%s')" % (
             employee_id, employee_name, employee_user, employee_password, shop_id)
         #self.interact_db(query, 'commit')
@@ -74,7 +72,6 @@ class DBManager:
         return
 
     def create_new_customer(self, fullname, phone, anotherphonenumber, City, Address, Email, employee_id ):
-
         query = "INSERT INTO customers( customer_name, customer_phone, customer_extraphone, customer_city, customer_address, customer_email, employee_id) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (
             fullname, phone, anotherphonenumber, City, Address, Email, employee_id)
         self.commit(query)
@@ -90,7 +87,13 @@ class DBManager:
 
     def get_orders(self):
         query = "select orders.order_id, customers.customer_name, customers.customer_city, orders.order_date, orders.order_status,orders.order_price from orders inner join customers on orders.customer_phone=customers.customer_phone  "
-        # query_result = self.interact_db(query, query_type='fetch')
+        query_result = self.fetch(query)
+        return query_result
+
+
+    def get_excel(self):
+        query = "select orders.order_id,orders.order_status, customers.customer_name, customers.customer_city, customers.customer_address, customers.customer_phone  ,orders.order_date, orders.order_price, products.product_type, products.product_name, product_in_order.size, product_in_order.color, product_in_order.comment from customers inner join orders " \
+                "on orders.customer_phone = customers.customer_phone  inner join  product_in_order on orders.order_id=product_in_order.order_id inner join  products on products.product_id=product_in_order.product_id  "
         query_result = self.fetch(query)
         return query_result
 
@@ -105,16 +108,15 @@ class DBManager:
 
     def get_order_and_phone(self, user, password):
         query = "select orders.order_id, orders.customer_phone from orders"
-        #query_result = self.interact_db(query, query_type='fetch')
         query_result = self.fetch(query)
         for que in query_result:
             if que.order_id == int(user) and que.customer_phone == password:
                 return True
         return False
 
+
     def get_employee_id(self, user, password):
         query = "select employees.employee_id ,employees.employee_user, employees.employee_password from employees"
-        #query_result = self.interact_db(query, query_type='fetch')
         query_result = self.fetch(query)
         for que in query_result:
             if que.employee_user == user and que.employee_password == password:
@@ -123,7 +125,6 @@ class DBManager:
 
     def get_employee_name(self, user, password):
         query = "select employees.employee_name ,employees.employee_user, employees.employee_password from employees"
-        #query_result = self.interact_db(query, query_type='fetch')
         query_result = self.fetch(query)
         for que in query_result:
             if que.employee_user == user and que.employee_password == password:
@@ -132,10 +133,7 @@ class DBManager:
 
     def get_customer_name(self, phone):
         query = "select customers.customer_name, customers.customer_phone from customers"
-        # query_result = self.interact_db(query, query_type='fetch')
         query_result = self.fetch(query)
-        print(query_result)
-        print(phone)
         for que in query_result:
             if que.customer_phone == phone:
                 return que.customer_name
@@ -146,14 +144,12 @@ class DBManager:
 
         query = "INSERT INTO shops( shop_id, shop_name, shop_city, shop_phone) VALUES ( '%s', '%s', '%s', '%s')" % (
             shop_id, shop_name, shop_city, shop_phone)
-        #self.interact_db(query, 'commit')
         self.commit(query)
         return
 
-    def create_new_product(self, product_id, product_name, product_type, product_pic):
-
-        query = "INSERT INTO products( product_id, product_name, product_type, product_pic) VALUES ( '%s', '%s', '%s', '%s')" % (
-            product_id, product_name, product_type, product_pic)
+    def create_new_product(self, product_id, product_name, product_type, product_price):
+        query = "INSERT INTO products( product_id, product_name, product_type, product_price) VALUES ( '%s', '%s', '%s', '%s')" % (
+            product_id, product_name, product_type, product_price)
         self.commit(query)
         return
 
@@ -203,8 +199,6 @@ class DBManager:
                 return True
         return False
 
-
-
     def get_customer_phone(self, phone):
         query = "select customers.customer_phone from customers"
         query_result = self.fetch(query)
@@ -222,8 +216,8 @@ class DBManager:
                 return que
 
     def updade_customer(self, phone, city, address, email):
-        query = "UPDATE customers SET customer_city=%s, customer_address=%s, customer_email=%s  where customer_phone=%s" % (city, address, email, phone)
-        query_result = self.commit(query)
+        query = "UPDATE customers SET customer_city='%s', customer_address='%s', customer_email='%s'  where customer_phone=%s" % (city, address, email, phone)
+        self.commit(query)
         return
 
     def get_ordersearch(self, search):
@@ -246,6 +240,11 @@ class DBManager:
         query_result = self.fetch(query)
         return query_result
 
+    def customers_phone(self):
+        query = "select customer_phone from customers"
+        query_result = self.fetch(query)
+        return query_result
+
     def product_id(self):
         query = "select DISTINCT product_id from  products"
         query_result = self.fetch(query)
@@ -256,11 +255,41 @@ class DBManager:
         query_result = self.fetch(query)
         return query_result
 
-    def update_orders(self, order_status, order_id):
-        query = "UPDATE orders SET order_status = %s WHERE order_id =%s" % (order_status, order_id)
+    def get_salesByProducets(self):
+        query = "select count(product_in_order.product_id) as numofsales, products.product_type, product_in_order.quantity from product_in_order inner join products on product_in_order.product_id = products.product_id GROUP BY  products.product_type"
+        query_result = self.fetch(query)
+        return query_result
+
+    def update_orders(self, order_id, order_status):
+        query = "UPDATE orders SET order_status = '%s' WHERE order_id =%s" % (order_status, order_id)
         self.commit(query)
         return
 
+    def updade_customerAddress(self, phone, city, address):
+        query = "UPDATE customers SET customer_city='%s', customer_address='%s' where customer_phone=%s" % (city, address, phone)
+        self.commit(query)
+        return
+
+    def update_product_price(self, product_id, product_price):
+        query = "update products set product_price='%s' where product_id=%s" % (product_price, product_id)
+        self.commit(query)
+        return
+
+    def delete_order(self, order_id):
+        query = "DELETE FROM orders Where order_id='%s';" % order_id
+        self.commit(query)
+        return
+
+    def delete_product_in_order(self, order_id):
+        query = "DELETE FROM product_in_order Where order_id='%s';" % order_id
+        self.commit(query)
+        return
+
+    def get_user_orders(self, employee_id):
+        query = "select orders.order_id as order_id, customers.customer_name as customer_name, orders.order_date as order_date, customers.customer_phone as customer_phone, orders.order_status as order_status from employees inner join customers on customers.employee_id = employees.employee_id " \
+                "inner join orders on orders.customer_phone = customers.customer_phone where employees.employee_id ='%s'" % (employee_id)
+        query_result = self.fetch(query)
+        return query_result
 
 # Creates an instance for the DBManager class for export.
 dbManager = DBManager()

@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: alert
+Version: 0.0.2
+Summary: A quick package to raise alerts for long running programs.
+Home-page: https://github.com/rehanguha/alert
+Author: Rehan Guha
+Author-email: rehanguha29@gmail.com
+License: gpl-3.0
+Keywords: alert,log,mail,email,smtplib
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Scientific/Engineering
+Classifier: Intended Audience :: Developers
+Requires-Python: >=2.7
+Description-Content-Type: text/markdown
+
+# Alert
+A quick package to Email logs for long running programs.
+
+```bash
+pip install alert
+```
+
+## Email Alerts
+> import alert
+
+> mail = alert.mail(sender_email="", sender_password="")
+
+> mail.send_email(receiver_email="", subject="", msg="")
+
+

@@ -18,10 +18,11 @@
             <a href="\managment\1" name="newshop"> New Shop </a>
             <a href="\managment\2">New Product</a>
             <a href="\managment\3">Update Order Status</a>
-            <a href="\managment\4" >Stores Sales</a>
-          </div>
+            <a href="\managment\4">Update Customer address</a>
+            <a href="\managment\5">Delete order</a>
+            <a href="\managment\6">Update product price</a>
+        </div>
     </div>
-
 
 
     <div class="table">
@@ -36,10 +37,18 @@
         {% if option == 3 %}
             {% include('updateorderstatus.html') %}
         {% endif %}
-         {% if option == 4 %}
-            {% include('storessales.html') %}
+
+          {% if option == 4 %}
+            {% include('updatecustomer.html') %}
         {% endif %}
 
+        {% if option == 5 %}
+            {% include('deleteorder.html') %}
+        {% endif %}
+
+        {% if option == 6 %}
+            {% include('updateproductprice.html') %}
+        {% endif %}
     </div>
 
   </body>

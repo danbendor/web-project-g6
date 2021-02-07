@@ -1,7 +1,7 @@
 
 <title> sign up</title>
 <link rel="stylesheet" href="{{ url_for('addnewuser.static', filename='css/addnewuser.css') }}"/>
-<div class="login-box" style="margin-top: 5%">
+<div class="login-box" style="margin-top: 5%; color: white">
   <h2>New User</h2>
   <form action="/addnewuser" method="POST">
       <input type="text" name="EmployeId" placeholder="EmployeId" />
@@ -9,7 +9,9 @@
       <input type="text" name="user" placeholder="user" />
       <input type="password" name="password"placeholder="Password"/>
       <td>
-          <select type="shop_id" name="shop_id"  >
+          <br>
+          shop id:
+         <select type="shop_id" name="shop_id"  >
           {% for j in shops %}
                    <OPTION value="{{j[0]}}">{{j[0]}}</OPTION>
           {% endfor %}

@@ -10,14 +10,13 @@
 
   <div class="grid-area up">
       {%  include 'header.html' %}
-    <h2>New order</h2>
+      <br>
+    <h2>New customer:</h2>
+
   </div>
-
-  <form  action="/addorder" method="POST"  >
+  <form  action="/addcustomer" method="POST"  >
       <div class="grid-area left">
-          <label for="order">Order Number</label>
-          <input type="text" id="order" name="OrderNumber" placeholder="Order Number"  >
-
+<br><br>
           <label for="fname">Full Name</label>
           <input type="text" id="fullname" name="fullname" placeholder="Full Name">
 
@@ -37,14 +36,24 @@
            <label for="Email">Email</label>
           <input type="text" id="Email" name="Email" placeholder="Email">
 
-        {#  <label for="numproduct">Number of products purchased</label><br>
-          <input type="number" id="numproduct" name="Numberofproductspurchased" placeholder="Number of products purchased" value="1" min="1" ><br><br>
-#}
+          <input type="submit" value="Add" >
       </div>
-      <div class="grid-area right" >
+  </form>
+    <form  action="/addorder" method="POST"  >
+        <br>
+        <h2> Order deatils:</h2>
 
-      
-        <label for="product">product</label>
+      <div class="grid-area right" >
+         Choose customer phone:   <select type="customer_phone" name="customer_phone"  >
+          {% for j in customers %}
+                   <OPTION value="{{j[0]}}">{{j[0]}}</OPTION>
+          {% endfor %}
+                  </select>
+
+           <label for="order">Order Number</label>
+          <input type="text" id="order" name="OrderNumber" placeholder="Order Number"  >
+
+          <label for="product">product</label>
         <td>
           <select type="product_id" name="product_id"  >
           {% for j in products %}
@@ -72,6 +81,6 @@
 
           <input id="addproduct" type="submit" value="add product" onclick="createorderproduct()">
       </div>
-  </form>
+    </form>
 </body>
 </html>

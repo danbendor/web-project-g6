@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('addorder.static', filename='css/addorder.css') }}"/>
+    <script src="{{ url_for('addorder.static', filename='js/jsaddorder.js') }}"></script>
+<title> add order</title>
+</head>
+<body>
+
+  <div class="grid-area up">
+      {%  include 'header.html' %}
+    <h2>New order</h2>
+  </div>
+
+  <form  action="/addorder" method="POST"  >
+      <div class="grid-area left">
+          <label for="order">Order Number</label>
+          <input type="text" id="order" name="OrderNumber" placeholder="Order Number"  >
+
+          <label for="fname">Full Name</label>
+          <input type="text" id="fullname" name="fullname" placeholder="Full Name">
+
+
+          <label for="Phone">Phone</label>
+          <input type="text"  id="phone" name="phone" placeholder="phone">
+
+          <label for="Phone1">another phone number</label>
+          <input type="text" id="Phone1" name="anotherphonenumber" placeholder="another phone number">
+
+          <label for="City">City</label>
+          <input type="text" id="City" name="City" placeholder="City">
+
+          <label for="Area">Area</label>
+          <select id="Area" name="Area">
+              <option value="Center">Center</option>
+              <option value="North">North</option>
+              <option value="south">South</option>
+              <option value="jer">Jerusalem</option>
+          </select>
+
+          <label for="Address">Address</label>
+          <input type="text" id="Address" name="Address" placeholder="Address">
+
+          <label for="numproduct">Number of products purchased</label><br>
+          <input type="number" id="numproduct" name="Numberofproductspurchased" placeholder="Number of products purchased" value="1" min="1" ><br><br>
+
+      </div>
+      <div class="grid-area right" >
+        <label id="lop"> add deatils for product 1 </label><br>
+        <br>
+      
+        <label for="product">product</label>
+        <select id="product" name="product">
+            <option value="Matrress">mattress</option>
+            <option value="bad">Double bed</option>
+            <option value="Smartbad">Adjustable Bed</option>
+            <option value="badmatress">Bed + mattress</option>
+            <option value="juniorbad">
+                Youth Bed</option>
+            <option value="openbad">
+                On easy</option>
+        </select>
+        <label for="product1">model</label>
+          <input type="text" id="product1" name="model" placeholder="model">
+
+        <label for="quantity">quantity</label>
+          <input type="text" id="quantity" name="quantity" placeholder="quantity">
+
+        <label for="Size"> Size</label>
+          <input type="text" id="size" name="size" placeholder="Size ">
+
+        <label for="cloth">color</label>
+          <input type="text" id="cloth" name="cloth" placeholder="cloth">
+
+        <label for="Price">Price</label>
+          <input type="text" id="price" name="price" placeholder="Price">
+
+          <label for="subject">Comment</label>
+          <textarea id="subject" name="comment" placeholder="Comment" style="height:200px"></textarea>
+
+          <input id="addproduct" type="submit" value="add product" onclick="createorderproduct()">
+      </div>
+  </form>
+</body>
+</html>

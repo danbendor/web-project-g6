@@ -1,0 +1,30 @@
+
+<title> sign up</title>
+<link rel="stylesheet" href="{{ url_for('storessales.static', filename='css/addnewuser.css') }}"/>
+<div class="login-box" style="margin-top: 15% ; color:white ; width: 50%; text-align: center  ">
+  <h2> Tracking my orders </h2>
+        <table style="  border-collapse: collapse; " >
+            <tr>
+                <th style="text-align: center; padding: 10px;">order id   </th>
+                <th style="text-align: center; ">customer name   </th>
+                <th style="text-align: center; ">order date   </th>
+                <th style="text-align: center;">customer phone</th>
+                <th style="text-align: center; padding: 10px;">order status</th>
+            </tr>
+        <tr style="{background-color: #f5f5f5;}">
+        {% if orders %}
+            {% for order in orders %}
+                <td style="text-align: center; padding: 10px;">{{ order.order_id }}</td>
+                <td style="text-align: center; padding: 10px;">{{ order.customer_name }}</td>
+                <td style="text-align: center; padding: 10px;">{{ order.order_date }}</td>
+                <td style="text-align: center; padding: 10px;"> {{ order.customer_phone }}</td>
+                <td style="text-align: center; padding: 10px;"> {{ order.order_status }}</td>
+        </tr>
+            {% endfor %}
+        {% endif %}
+        </table>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+</div>

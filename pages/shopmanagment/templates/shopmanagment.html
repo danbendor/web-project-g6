@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{url_for('orderManagment.static', filename='css/orderManagementcss.css') }}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management</title>
+
+</head>
+<body>
+    <div class="topnav">
+        {%  include 'header.html' %}
+    </div>
+    <h2> Hello, {{  session['employee_name'] }} </h2>
+    <div class="title">
+        <div class="h2a"><h2 >     Order Management  </h2> </div>
+        <a href="\addorder"> <button class="btn" > Add New Order </button></a>
+
+    </div>
+
+
+        <div class="main">
+    <table>
+    <tr>
+        <th style="width: 10%;">Order Number</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>City</th>
+        <th>Status</th>
+        <th>Price</th>
+        <th style="width: 10%;">Details</th>
+
+    </tr>
+    <tr>
+         {% if orders %}
+            {% for order in orders %}
+                {% if orders.shop_id==shop_id %}
+                    <tr>
+                    <td>{{ order.order_id }}</td>
+                    <td>{{ order.customer_name }}</td>
+                    <td>{{ order.order_date }}</td>
+                    <td> {{ order.customer_city }}</td>
+                    <td> {{ order.order_status }} </td>
+                    <td> {{ order.order_price }}</td>
+                        <form action="detailsorder" method="get">
+                        <td> <a href="/detailsorder/{{ order.order_id }}" name="orderid" value="{{ order.order_id }}"  class="deatils" title="more deatils" data-toggle="tooltip"> <img src="{{url_for('orderManagment.static', filename='media/edit.png') }}"  width="40%"></a></td>
+                        </form>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </table>
+    </div>
+</body>
+</html>

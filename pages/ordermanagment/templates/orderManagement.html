@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="{{url_for('orderManagment.static', filename='css/orderManagementcss.css') }}"/>
+    <script src="{{ url_for('orderManagment.static', filename='js/catalog.js') }}"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Management</title>
@@ -11,7 +12,13 @@
     <div class="topnav">
         {%  include 'header.html' %}
     </div>
-    <h2> Hello, {{  session['employee_name'] }} </h2>
+
+    {% if session['employee'] %}
+        <h2> Hello, {{  session['employee_name'] }} </h2>
+    {% endif %}
+    {% if session['customer'] %}
+        <h2> Hello, {{  session['user_name'] }} </h2>
+    {% endif %}
     <div class="title">
         <div class="h2a"><h2 >     Order Management  </h2> </div>
         <a href="\addorder"> <button class="btn" > Add New Order </button></a>
@@ -20,11 +27,11 @@
 
 
         <div class="main">
-    <table>
+            <table id="myTable">
     <tr>
         <th style="width: 10%;">Order Number</th>
-        <th>Name</th>
-        <th>Date</th>
+        <th onclick="sortTable(0)">Name</th>
+        <th onclick="sortTable(1)">Date</th>
         <th>City</th>
         <th>Status</th>
         <th>Price</th>

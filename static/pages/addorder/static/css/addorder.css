@@ -1,0 +1,79 @@
+body{
+    display: grid;
+    font-family: Thaoma;
+    -webkit-font-smoothing: antialiased;
+    background: #DFC2F2;
+    background-image: linear-gradient( 135deg, #CE9FFC 10%, #7367F0 100%);
+    background-attachment: fixed;	
+    background-size: cover;
+    width  : auto;
+    height: auto;
+    grid-template-columns: 50% 50%;
+    grid-template-rows   : 5% 45% 45% ;
+    grid-template-areas  :
+        "up up"
+        "left right"
+        "left right"
+        
+}
+
+.grid-area {
+	padding: 1em 1em 1em 1em;
+	
+}
+.up{
+    grid-area: up;
+    margin-left: 1%;
+    
+}
+
+
+.left{
+    grid-area: left;
+    text-align: left;
+    font-size: 120%;
+	line-height: 1.2;
+    border-right: 1px solid rgb(105, 105, 105);
+    margin-top: 5%;
+    display: flow;
+
+}
+.right{
+    grid-area: right;
+    text-align: left;
+    font-size: 120%;
+	line-height: 1.2;
+	border-right: 1px solid rgb(105, 105, 105);
+}
+
+
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #ffffff9c;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f24b;
+  padding: 20px;
+}

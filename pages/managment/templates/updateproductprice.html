@@ -1,0 +1,23 @@
+
+<title> </title>
+<link rel="stylesheet" href="{{ url_for('updatecustomer.static', filename='css/addnewuser.css') }}"/>
+<div class="login-box" style="color: white">
+  <h2>Update product price</h2>
+  <form action="/updateproductprice" method="GET">
+     Choose product:   <select type="product_id" name="product_id"  >
+          {% for product in products %}
+                   <OPTION value="{{product[0]}}">{{product[0]}}</OPTION>
+          {% endfor %}
+                  </select>
+  <br><br>
+         New price:   <input type="text" name="product_price" placeholder="" />
+         <br><br>
+
+         <input type="submit" >
+
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+  </form>
+</div>

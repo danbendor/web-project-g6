@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+    <link rel="stylesheet" href="{{ url_for('managment.static', filename='css/report.css') }}"/>
+    <script src="{{ url_for('managment.static', filename='js/managmentJS.js') }}"></script>
+    <header>
+        <title> managment </title>
+
+    </header>
+  <body>
+    <div class="topnav" style="width: auto;height:75%"  >
+      {%  include 'header.html' %}
+    </div>
+
+     <div class="menu">
+        <div class="vertical-menu">
+
+            <a href="\managment\1" name="newshop"> New Shop </a>
+            <a href="\managment\2">New Product</a>
+            <a href="#">Petah Tikva</a>
+            <a href="#" >Netivot</a>
+          </div>
+    </div>
+
+
+
+    <div class="table">
+        {% if option == 1 %}
+            {% include('addnewshop.html') %}
+        {% endif %}
+
+        {% if option == 2 %}
+            {% include('addnewproduct.html') %}
+        {% endif %}
+    </div>
+
+  </body>
+  </html>

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request, session
 
+
 ###### App setup
 app = Flask(__name__)
 app.config.from_pyfile('settings.py')
@@ -16,6 +17,7 @@ app.register_blueprint(about)
 ## Catalog
 from pages.catalog.catalog import catalog
 app.register_blueprint(catalog)
+
 
 ## order managment
 from pages.ordermanagment.orderManagemnent import orderManagement
@@ -37,6 +39,10 @@ app.register_blueprint(addnewuser)
 from pages.managment.managment import managment
 app.register_blueprint(managment)
 
+## report
+from pages.report.report import report
+app.register_blueprint(report)
+
 ## managment
 from pages.contact.contact import contact
 app.register_blueprint(contact)
@@ -57,6 +63,15 @@ app.register_blueprint(storessales)
 
 from pages.managmentfiles.addnewshop import updateorderstatus
 app.register_blueprint(updateorderstatus)
+
+from pages.managmentfiles.addnewshop import updateproductprice
+app.register_blueprint(updateproductprice)
+
+from pages.managmentfiles.addnewshop import deleteorder
+app.register_blueprint(deleteorder)
+
+from pages.managmentfiles.addnewshop import updatecustomer
+app.register_blueprint(updatecustomer)
 
 from pages.customerlogin.customerlogin import customerlogin
 app.register_blueprint(customerlogin)

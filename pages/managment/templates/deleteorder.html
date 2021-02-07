@@ -1,0 +1,19 @@
+
+<title> sign up</title>
+<link rel="stylesheet" href="{{ url_for('addnewproduct.static', filename='css/addnewuser.css') }}"/>
+<div class="login-box" style="margin-top: 5%">
+  <h2>delete order</h2>
+  <form action="/deleteorder" method="GET">
+     Choose order id:   <select type="order_id" name="order_id"  >
+          {% for order in orders %}
+                   <OPTION value="{{order[0]}}">{{order[0]}}</OPTION>
+          {% endfor %}
+                  </select>
+           <input type="submit" value="Delete order" >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+  </form>
+
+</div>

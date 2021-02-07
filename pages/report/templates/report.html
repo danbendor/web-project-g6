@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+    <link rel="stylesheet" href="{{ url_for('report.static', filename='css/report.css') }}"/>
+    <header>
+        <title> Report </title>
+    </header>
+  <body>
+    <div class="topnav" style="width: auto;height:85%"  >
+      {%  include 'header.html' %}
+    </div>
+
+     <div class="menu">
+        <div class="vertical-menu">
+            <a href="\report\1" >Stores Sales</a>
+            <a href="\report\2" >Sales by products</a>
+            <a href="\report\3" >Track my orders</a>
+        </div>
+    </div>
+
+    <div class="table">
+        {% if option == 1 %}
+                {% include('storessales.html') %}
+        {% endif %}
+        {% if option == 2 %}
+             {% include('productsales.html') %}
+        {% endif %}
+        {% if option == 3 %}
+             {% include('myorders.html') %}
+        {% endif %}
+
+    </div>
+  </body>
+  </html>

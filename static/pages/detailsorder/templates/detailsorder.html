@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+    
+<head>
+    <link rel="stylesheet" href="{{ url_for('detailsorder.static', filename='css/detailsordercss.css') }}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>order deatils</title>
+</head>
+<body>
+      <div class="topnav" style="height: 125%" >
+        {%  include 'header.html' %}
+      </div>
+    <div id="container">
+            <div class="product-details">
+                <h4 >Order Number {{ orderid }} </h4>
+                            <p class="information">
+                                <hr> <strong>{{ order_date }}</strong> </hr>
+                                <hr><strong>{{ details.customer_name }}</strong></hr>
+                                <hr><strong>{{ details.customer_city }}</strong></hr>
+                                <hr><strong>Address</strong></hr>
+                                <hr><strong>City</strong></hr>
+                            </p>
+        <div class="control">
+            <button class="btn">
+           <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+        <a href="/Contacthtml">
+           <span class="buy">Send massage</span>
+        </a>
+            </button>
+
+        </div>
+                    
+        </div>
+            
+            
+            
+        <div class="product-image">
+            
+            <img src="2.jpg" alt="מיטה מילאן">
+          
+        <div class="info">
+            <h2>The Description</h2>
+            <ul>
+                <li><strong>סוג מוצר: </strong>X</li>
+                <li><strong>דגם: </strong>Y</li>
+                <li><strong>מידה: </strong>A</li>
+                <li><strong>בד: </strong>B</li>
+                <li><strong>הערות: </strong>C</li>
+                
+            </ul>
+        </div>
+        </div>
+       
+        
+        </div>
+        
+         
+                    <div class="track">
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Products Ready</span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> Shipping Date set </span> </div>
+                        <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Done</span> </div>
+                    </div>
+                 
+                
+                </div>
+    
+</body>
+</html>
